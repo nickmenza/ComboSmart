@@ -1,0 +1,9 @@
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\bin\x64\Debug\gxdevices01.exe
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\bin\x64\Debug\gxdevices01.pdb
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\bin\x64\Debug\gxdevices01.xml
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\obj\x64\Debug\gxdevices01.vbprojResolveAssemblyReference.cache
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\obj\x64\Debug\gxdevices01.Resources.resources
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\obj\x64\Debug\gxdevices01.vbproj.GenerateResource.Cache
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\obj\x64\Debug\gxdevices01.exe
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\obj\x64\Debug\gxdevices01.xml
+C:\Users\NickZ\Desktop\vbnet\gx.examples\vb80\gxdevices01\obj\x64\Debug\gxdevices01.pdb

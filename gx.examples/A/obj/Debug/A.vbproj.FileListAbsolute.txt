@@ -1,0 +1,11 @@
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\bin\Debug\A.exe
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\bin\Debug\A.pdb
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\bin\Debug\A.xml
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\bin\Debug\Pr22.dll
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.vbprojResolveAssemblyReference.cache
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.Resources.resources
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.vbproj.GenerateResource.Cache
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.exe
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.xml
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.pdb
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.Form1.resources

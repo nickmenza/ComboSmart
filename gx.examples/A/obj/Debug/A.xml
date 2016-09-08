@@ -1,0 +1,63 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+A
+</name>
+</assembly>
+<members>
+<member name="T:A.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:A.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:A.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:A.analyze.Open">
+ <summary>
+ Opens the first document reader device.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:A.analyze.PrintBinary(System.Byte[],System.Int32,System.Int32)">
+ <summary>
+ Prints a hexa dump line from a part of an array.
+ </summary>
+ <param name="arr">The whole array.</param>
+ <param name="pos">Position of the first item to print.</param>
+ <param name="sz">Number of items to print.</param>
+</member>
+<member name="M:A.analyze.PrintDocFields(Pr22.Processing.Document)">
+ <summary>
+ Prints out all fields of a document structure to console.
+ </summary>
+ <remarks>
+ Values are printed in three different forms: raw, formatted and standardized.
+ Status (checksum result) is printed together with fieldname and raw value.
+ At the end, images of all fields are saved into png format.
+ </remarks>
+ <param name="doc"></param>
+</member>
+<member name="M:A.info.Open">
+ <summary>
+ Opens the first document reader device.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:A.scanner.Open">
+ <summary>
+ Opens the first document reader device.
+ </summary>
+ <returns></returns>
+</member>
+</members>
+</doc>

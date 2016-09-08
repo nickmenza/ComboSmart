@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Passport Reader Document File -->
+<document type="ICAO standard Passport (MRP)" ocr="2.0.4.53" windowframe="0,0,121390,0,120673,80155,0,78869" task="ANALYZE">
+   <fieldlist>
+      <field id="VIZ_FACE" checksum="NO" windowframe="1492,12047,30846,12092,30757,51903,1488,51700"/>
+   </fieldlist>
+   <imagelist>
+      <image file="" captime="2016-09-07 08:37:39.263" camera="258" light="INFRA" page="0"/>
+      <image file="" captime="2016-09-07 08:37:39.790" camera="257" light="WHITE" page="0"/>
+      <image file="" captime="2016-09-07 08:37:42.596" camera="321" light="KINEGRAM" page="0"/>
+   </imagelist>
+</document>

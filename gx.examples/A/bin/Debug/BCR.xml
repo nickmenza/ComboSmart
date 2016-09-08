@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Passport Reader Document File -->
+<document type="Unknown document" ocr="2.0.4.53" task="ANALYZE">
+   <fieldlist/>
+   <imagelist>
+      <image file="" captime="2016-09-07 08:37:39.263" camera="258" light="INFRA" page="0"/>
+      <image file="" captime="2016-09-07 08:37:39.790" camera="257" light="WHITE" page="0"/>
+      <image file="" captime="2016-09-07 08:37:42.596" camera="321" light="KINEGRAM" page="0"/>
+   </imagelist>
+</document>
