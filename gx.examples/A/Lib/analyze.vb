@@ -28,7 +28,49 @@ Public Class analyze
         Return 0
     End Function
     '----------------------------------------------------------------------
+    Public Function Test_Scanner(value) As Array
+        pr = value
+        Dim passport_array As Array
+        If pr IsNot Nothing Then
+            Dim Scanner As DocScanner = pr.Scanner
+            Dim OcrEngine As Engine = pr.Engine
 
+            System.Console.WriteLine("Capturing some images to read from.")
+            Dim ScanTask As New Pr22.Task.DocScannerTask()
+
+            'For OCR (MRZ) reading purposes, IR (infrared) image is recommended.
+            ScanTask.Add(Pr22.Imaging.Light.White).Add(Pr22.Imaging.Light.Infra)
+
+            Dim DocPage As Page = Scanner.Scan(ScanTask, Pr22.Imaging.PagePosition.First)
+            System.Console.WriteLine()
+
+            ' Pictuce VizFace
+            System.Console.WriteLine("Reading all the textual and graphical field data as well as " + "authentication result from the Visual Inspection Zone.")
+            Dim VIZReadingTask As New Pr22.Task.EngineTask()
+            VIZReadingTask.Add(FieldSource.Viz, FieldId.All)
+            Dim VizDoc As Document = OcrEngine.Analyze(DocPage, VIZReadingTask)
+            PrintDocFields(VizDoc)
+            VizDoc.Save(Document.FileFormat.Xml).Save("VIZ.xml")
+
+            ' Data Person   'Specify the fields we would like to receive.
+            System.Console.WriteLine("Reading all the field data of the Machine Readable Zone.")
+            Dim MrzReadingTask As New Pr22.Task.EngineTask()
+            MrzReadingTask.Add(FieldSource.Mrz, FieldId.All)
+            Dim MrzDoc As Document = OcrEngine.Analyze(DocPage, MrzReadingTask)
+
+            passport_array = PrintDocFields(MrzDoc)
+            'For Each num In passport_array 'test for array
+            'Console.WriteLine(num)
+            'Next
+            System.Console.WriteLine("Scanner finished")
+            Return passport_array
+        Else
+            passport_array = Nothing
+            Return passport_array
+        End If
+
+
+    End Function
     Public Function Program() As Array
         'Devices can be manipulated only after opening.
         If Open() <> 0 Then
@@ -46,19 +88,36 @@ Public Class analyze
 
             System.Console.WriteLine("Capturing some images to read from.")
             Dim ScanTask As New Pr22.Task.DocScannerTask()
+
             'For OCR (MRZ) reading purposes, IR (infrared) image is recommended.
             ScanTask.Add(Pr22.Imaging.Light.White).Add(Pr22.Imaging.Light.Infra)
+
             Dim DocPage As Page = Scanner.Scan(ScanTask, Pr22.Imaging.PagePosition.First)
             System.Console.WriteLine()
 
             System.Console.WriteLine("Reading all the field data of the Machine Readable Zone.")
             Dim MrzReadingTask As New Pr22.Task.EngineTask()
+
+
+            System.Console.WriteLine("Capturing more images for VIZ reading and image authentication.")
+            ScanTask = New Pr22.Task.DocScannerTask()
+            'Reading from VIZ -except face photo- Is available in special OCR engines only.
+            ScanTask.Add(Pr22.Imaging.Light.All)
+            DocPage = Scanner.Scan(ScanTask, Pr22.Imaging.PagePosition.Current)
+            System.Console.WriteLine()
+
+            System.Console.WriteLine("Reading all the textual and graphical field data as well as " +
+                "authentication result from the Visual Inspection Zone.")
+            Dim VIZReadingTask As New Pr22.Task.EngineTask()
+            VIZReadingTask.Add(FieldSource.Viz, FieldId.All)
+
+
             'Specify the fields we would like to receive.
             MrzReadingTask.Add(FieldSource.Mrz, FieldId.All)
             Dim MrzDoc As Document = OcrEngine.Analyze(DocPage, MrzReadingTask)
             Dim passport_array As Array
             passport_array = PrintDocFields(MrzDoc)
-            'For Each num In array 'test for array
+            'For Each num In passport_array 'test for array
             'Console.WriteLine(num)
             'Next
             System.Console.WriteLine("Scanner finished")
@@ -163,19 +222,18 @@ Public Class analyze
                             passport_array(4) = FormattedValue
                             'array.Add(FormattedValue)
                         Case "MrzBirthDate"
-                            passport_array(5) = FormattedValue
+                            passport_array(5) = DAY_MONTH_YEAR(FormattedValue)
                             'array.Add(FormattedValue)
                         Case "MrzExpiryDate"
-                            passport_array(6) = FormattedValue
+                            passport_array(6) = DAY_MONTH_YEAR(FormattedValue)
                             'array.Add(FormattedValue)
                         Case "MrzSex"
-                            passport_array(7) = FormattedValue
+                            passport_array(7) = mr_or_miss(FormattedValue)
                             'array.Add(FormattedValue)
 
                         Case Else
 
                     End Select
-
 
 
                     'System.Console.WriteLine("test" + Value)
@@ -244,4 +302,63 @@ Public Class analyze
         System.Console.WriteLine("Document frame found. Page:{0}", e.Page)
     End Sub
     '----------------------------------------------------------------------
+    '---------------BIRTHDAY-----------------------------------------------
+    Private Function DAY_MONTH_YEAR(value) As String
+        Dim Day As String = value.Substring(4, 2)
+        Dim month As String = value.Substring(2, 2)
+        Dim year As String = value.Substring(0, 2)
+        Dim birthday_new As String
+
+        Select Case month
+            Case "01"
+                month = "JAN"
+            Case "02"
+                month = "FEB"
+            Case "03"
+                month = "MAR"
+            Case "04"
+                month = "APR"
+            Case "05"
+                month = "MAY"
+            Case "06"
+                month = "JUN"
+            Case "07"
+                month = "JUL"
+            Case "08"
+                month = "AUG"
+            Case "09"
+                month = "SEP"
+            Case "10"
+                month = "OCT"
+            Case "11"
+                month = "NOV"
+            Case "12"
+                month = "DEC"
+            Case Else
+                month = Nothing
+        End Select
+
+        If year > "60" Then
+            year = "19" + year
+        Else
+            year = "20" + year
+        End If
+        birthday_new = Day + " " + month + " " + year
+        Console.WriteLine(birthday_new)
+        Return birthday_new
+    End Function
+    '----------------------------------------------------------------------
+
+    Public Function mr_or_miss(value)
+
+        Dim result As String
+        If value = "M" Then
+            result = "Mr"
+        Else
+            result = "Mrs"
+        End If
+        Return result
+    End Function
+    '----------------------------------------------------------------------
+
 End Class

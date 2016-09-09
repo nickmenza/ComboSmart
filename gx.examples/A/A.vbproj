@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AB55C3E0-5610-4F2D-93BA-F2EF14C75150}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>A.Form1</StartupObject>
+    <StartupObject>A.Module1</StartupObject>
     <RootNamespace>A</RootNamespace>
     <AssemblyName>A</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -95,6 +95,7 @@
     <Compile Include="Lib\analyze.vb" />
     <Compile Include="Lib\info.vb" />
     <Compile Include="Lib\open.vb" />
+    <Compile Include="Lib\openscanner.vb" />
     <Compile Include="Lib\scanner.vb" />
     <Compile Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

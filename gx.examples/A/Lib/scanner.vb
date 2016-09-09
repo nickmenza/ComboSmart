@@ -1,5 +1,7 @@
 ﻿Imports Pr22
 Imports System
+Imports Pr22.Processing
+Imports Pr22.Task
 Public Class scanner
     Private pr As DocumentReaderDevice = Nothing
 
@@ -24,10 +26,52 @@ Public Class scanner
         End Try
 
         System.Console.Out.WriteLine("The device {0} is opened.", pr.Peripherals.Info.DeviceName)
-        System.Console.Out.WriteLine()
+        System.Console.Out.WriteLine(pr)
         Return 0
     End Function
     '----------------------------------------------------------------------
+
+
+    Public Function Test()
+        Dim openscanner As New openscanner
+        pr = openscanner.Open()
+        If pr IsNot Nothing Then
+            Dim Scanner As DocScanner = pr.Scanner
+            Dim OcrEngine As Engine = pr.Engine
+            While Scanner IsNot Nothing And OcrEngine IsNot Nothing
+                Console.WriteLine("Plase Enter For Scanner")
+                Console.ReadLine()
+                System.Console.WriteLine("Capturing some images to read from.")
+                Dim ScanTask As New Pr22.Task.DocScannerTask()
+                'Dim ScanTask1 As New Pr22.Task.FreerunTask()
+
+                'Console.WriteLine(ScanTask1)
+
+                'For OCR (MRZ) reading purposes, IR (infrared) image is recommended.
+                ScanTask.Add(Pr22.Imaging.Light.UV).Add(Pr22.Imaging.Light.White)
+
+                Dim DocPage As Page = Scanner.Scan(ScanTask, Pr22.Imaging.PagePosition.First)
+                System.Console.WriteLine()
+
+                System.Console.WriteLine("Reading all the field data of the Machine Readable Zone.")
+                Dim MrzReadingTask As New Pr22.Task.EngineTask()
+
+                'Specify the fields we would Like to receive.
+                MrzReadingTask.Add(FieldSource.Mrz, FieldId.All)
+                Dim MrzDoc As Document = OcrEngine.Analyze(DocPage, MrzReadingTask)
+                Dim passport_array As Array
+                Dim analyze As New analyze()
+                passport_array = analyze.PrintDocFields(MrzDoc)
+                'For Each num In passport_array 'test for array
+                'Console.WriteLine(num)
+                'Next
+                System.Console.WriteLine("Scanner finished")
+
+            End While
+        End If
+
+    End Function
+
 
     Public Function Program() As Integer
         System.Console.Out.WriteLine("This tutorial guides you through a complex image scanning process.")

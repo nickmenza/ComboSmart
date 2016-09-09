@@ -9,3 +9,5 @@ C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.exe
 C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.xml
 C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.pdb
 C:\Users\NickZ\Desktop\vbnet\gx.examples\A\obj\Debug\A.Form1.resources
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\bin\Debug\Database1.mdf
+C:\Users\NickZ\Desktop\vbnet\gx.examples\A\bin\Debug\Database1_log.ldf
